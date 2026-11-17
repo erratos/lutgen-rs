@@ -11,6 +11,7 @@ pub use nearest_neighbor::NearestNeighborRemapper;
 #[cfg(feature = "rayon")]
 use rayon::prelude::*;
 pub use rbf::{GaussianRemapper, LinearRemapper, ShepardRemapper};
+pub use tonal_ramp::TonalRampRemapper;
 
 use crate::RgbaImage;
 
@@ -18,6 +19,7 @@ mod gaussian_blur;
 mod gaussian_sample;
 mod nearest_neighbor;
 mod rbf;
+mod tonal_ramp;
 
 /// Interpolated Remapper. Implements an algorithm with some initialization parameters.
 pub trait InterpolatedRemapper<'a>: Sync {

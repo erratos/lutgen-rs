@@ -172,6 +172,27 @@ Generate and save a Hald CLUT to disk.
 
 
 
+**Tonal ramp:**
+### **`-T`** \[**`-k`**=_`0-1`_\] \[**`-s`**=_`RADIUS`_\] \[**`-l`**=_`2-16`_\]
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
+- **`-k`**, **`--keep-lum`**=_`0-1`_ &mdash; 
+  Lightness to keep from the original image, from 0 (the palette's neutral ramp) to 1 (the original lightness).
+   
+  [default: 0.5]
+- **`-s`**, **`--smooth`**=_`RADIUS`_ &mdash; 
+  Blend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.
+   
+  [default: 0.08]
+- **`-l`**, **`--level`**=_`2-16`_ &mdash; 
+  Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
+   
+  [default: 10]
+
+
+
+
+
 **Gaussian blur (default):**
 - **`-l`**, **`--level`**=_`2-16`_ &mdash; 
   Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
@@ -218,6 +239,8 @@ Generate and save a Hald CLUT to disk.
   Enable using Shepard's method (Inverse Distance RBF) for interpolation.
 - **`-N`**, **`--nearest-neighbor`** &mdash; 
   Disable interpolation completely.
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
@@ -344,6 +367,27 @@ Extract colors and generate a LUT from existing image(s). Can be used for replic
 
 
 
+**Tonal ramp:**
+### **`-T`** \[**`-k`**=_`0-1`_\] \[**`-s`**=_`RADIUS`_\] \[**`-l`**=_`2-16`_\]
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
+- **`-k`**, **`--keep-lum`**=_`0-1`_ &mdash; 
+  Lightness to keep from the original image, from 0 (the palette's neutral ramp) to 1 (the original lightness).
+   
+  [default: 0.5]
+- **`-s`**, **`--smooth`**=_`RADIUS`_ &mdash; 
+  Blend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.
+   
+  [default: 0.08]
+- **`-l`**, **`--level`**=_`2-16`_ &mdash; 
+  Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
+   
+  [default: 10]
+
+
+
+
+
 **Gaussian blur (default):**
 - **`-l`**, **`--level`**=_`2-16`_ &mdash; 
   Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
@@ -385,6 +429,8 @@ Extract colors and generate a LUT from existing image(s). Can be used for replic
   Enable using Shepard's method (Inverse Distance RBF) for interpolation.
 - **`-N`**, **`--nearest-neighbor`** &mdash; 
   Disable interpolation completely.
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
@@ -511,6 +557,27 @@ Apply a generated or provided Hald CLUT to images.
 
 
 
+**Tonal ramp:**
+### **`-T`** \[**`-k`**=_`0-1`_\] \[**`-s`**=_`RADIUS`_\] \[**`-l`**=_`2-16`_\]
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
+- **`-k`**, **`--keep-lum`**=_`0-1`_ &mdash; 
+  Lightness to keep from the original image, from 0 (the palette's neutral ramp) to 1 (the original lightness).
+   
+  [default: 0.5]
+- **`-s`**, **`--smooth`**=_`RADIUS`_ &mdash; 
+  Blend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.
+   
+  [default: 0.08]
+- **`-l`**, **`--level`**=_`2-16`_ &mdash; 
+  Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
+   
+  [default: 10]
+
+
+
+
+
 **Gaussian blur (default):**
 - **`-l`**, **`--level`**=_`2-16`_ &mdash; 
   Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
@@ -565,6 +632,8 @@ Apply a generated or provided Hald CLUT to images.
   Enable using Shepard's method (Inverse Distance RBF) for interpolation.
 - **`-N`**, **`--nearest-neighbor`** &mdash; 
   Disable interpolation completely.
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 
@@ -691,6 +760,27 @@ Generate a patch for colors inside text files.
 
 
 
+**Tonal ramp:**
+### **`-T`** \[**`-k`**=_`0-1`_\] \[**`-s`**=_`RADIUS`_\] \[**`-l`**=_`2-16`_\]
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
+- **`-k`**, **`--keep-lum`**=_`0-1`_ &mdash; 
+  Lightness to keep from the original image, from 0 (the palette's neutral ramp) to 1 (the original lightness).
+   
+  [default: 0.5]
+- **`-s`**, **`--smooth`**=_`RADIUS`_ &mdash; 
+  Blend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.
+   
+  [default: 0.08]
+- **`-l`**, **`--level`**=_`2-16`_ &mdash; 
+  Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
+   
+  [default: 10]
+
+
+
+
+
 **Gaussian blur (default):**
 - **`-l`**, **`--level`**=_`2-16`_ &mdash; 
   Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
@@ -743,6 +833,8 @@ Generate a patch for colors inside text files.
   Enable using Shepard's method (Inverse Distance RBF) for interpolation.
 - **`-N`**, **`--nearest-neighbor`** &mdash; 
   Disable interpolation completely.
+- **`-T`**, **`--tonal-ramp`** &mdash; 
+  Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.
 - **`-h`**, **`--help`** &mdash; 
   Prints help information
 

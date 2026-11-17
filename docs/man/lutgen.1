@@ -244,6 +244,35 @@ more colorful or more greyscale/unsaturated matches. Usually paired with `\-\-pr
 .PP
 .PP
 .PP
+.SS TONAL\ RAMP:
+.SS -T\ [-K=0-1]\ [-S=RADIUS]\ [-L=2-16]
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
+.PP
+.TP
+\fB\-k\fP\fR, \fP\fB\-\-keep\-lum\fP\fR=\fP\fI0\-1\fP
+\fRLightness to keep from the original image, from 0 (the palette\*(Aqs neutral ramp) to 1 (the original lightness).\fP
+.PP
+.TP
+\fR[default: 0.5]\fP
+.PP
+.TP
+\fB\-s\fP\fR, \fP\fB\-\-smooth\fP\fR=\fP\fIRADIUS\fP
+\fRBlend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.\fP
+.PP
+.TP
+\fR[default: 0.08]\fP
+.PP
+.TP
+\fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
+\fRHald clut level to generate. A level of 16 stores a value for the entire sRGB color space.\fP
+.PP
+.TP
+\fR[default: 10]\fP
+.PP
+.PP
+.PP
 .SS GAUSSIAN\ BLUR\ (DEFAULT):
 .TP
 \fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
@@ -313,6 +342,10 @@ For example, `~/.config/lutgen/My\-palette.txt` would be avalable to use as `my\
 .TP
 \fB\-N\fP\fR, \fP\fB\-\-nearest\-neighbor\fP
 \fRDisable interpolation completely.\fP
+.PP
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
 .PP
 .TP
 \fB\-h\fP\fR, \fP\fB\-\-help\fP
@@ -502,6 +535,35 @@ more colorful or more greyscale/unsaturated matches. Usually paired with `\-\-pr
 .PP
 .PP
 .PP
+.SS TONAL\ RAMP:
+.SS -T\ [-K=0-1]\ [-S=RADIUS]\ [-L=2-16]
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
+.PP
+.TP
+\fB\-k\fP\fR, \fP\fB\-\-keep\-lum\fP\fR=\fP\fI0\-1\fP
+\fRLightness to keep from the original image, from 0 (the palette\*(Aqs neutral ramp) to 1 (the original lightness).\fP
+.PP
+.TP
+\fR[default: 0.5]\fP
+.PP
+.TP
+\fB\-s\fP\fR, \fP\fB\-\-smooth\fP\fR=\fP\fIRADIUS\fP
+\fRBlend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.\fP
+.PP
+.TP
+\fR[default: 0.08]\fP
+.PP
+.TP
+\fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
+\fRHald clut level to generate. A level of 16 stores a value for the entire sRGB color space.\fP
+.PP
+.TP
+\fR[default: 10]\fP
+.PP
+.PP
+.PP
 .SS GAUSSIAN\ BLUR\ (DEFAULT):
 .TP
 \fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
@@ -566,6 +628,10 @@ more colorful or more greyscale/unsaturated matches. Usually paired with `\-\-pr
 .TP
 \fB\-N\fP\fR, \fP\fB\-\-nearest\-neighbor\fP
 \fRDisable interpolation completely.\fP
+.PP
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
 .PP
 .TP
 \fB\-h\fP\fR, \fP\fB\-\-help\fP
@@ -753,6 +819,35 @@ more colorful or more greyscale/unsaturated matches. Usually paired with `\-\-pr
 .PP
 .PP
 .PP
+.SS TONAL\ RAMP:
+.SS -T\ [-K=0-1]\ [-S=RADIUS]\ [-L=2-16]
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
+.PP
+.TP
+\fB\-k\fP\fR, \fP\fB\-\-keep\-lum\fP\fR=\fP\fI0\-1\fP
+\fRLightness to keep from the original image, from 0 (the palette\*(Aqs neutral ramp) to 1 (the original lightness).\fP
+.PP
+.TP
+\fR[default: 0.5]\fP
+.PP
+.TP
+\fB\-s\fP\fR, \fP\fB\-\-smooth\fP\fR=\fP\fIRADIUS\fP
+\fRBlend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.\fP
+.PP
+.TP
+\fR[default: 0.08]\fP
+.PP
+.TP
+\fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
+\fRHald clut level to generate. A level of 16 stores a value for the entire sRGB color space.\fP
+.PP
+.TP
+\fR[default: 10]\fP
+.PP
+.PP
+.PP
 .SS GAUSSIAN\ BLUR\ (DEFAULT):
 .TP
 \fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
@@ -839,6 +934,10 @@ For example, `~/.config/lutgen/My\-palette.txt` would be avalable to use as `my\
 .TP
 \fB\-N\fP\fR, \fP\fB\-\-nearest\-neighbor\fP
 \fRDisable interpolation completely.\fP
+.PP
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
 .PP
 .TP
 \fB\-h\fP\fR, \fP\fB\-\-help\fP
@@ -1026,6 +1125,35 @@ more colorful or more greyscale/unsaturated matches. Usually paired with `\-\-pr
 .PP
 .PP
 .PP
+.SS TONAL\ RAMP:
+.SS -T\ [-K=0-1]\ [-S=RADIUS]\ [-L=2-16]
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
+.PP
+.TP
+\fB\-k\fP\fR, \fP\fB\-\-keep\-lum\fP\fR=\fP\fI0\-1\fP
+\fRLightness to keep from the original image, from 0 (the palette\*(Aqs neutral ramp) to 1 (the original lightness).\fP
+.PP
+.TP
+\fR[default: 0.5]\fP
+.PP
+.TP
+\fB\-s\fP\fR, \fP\fB\-\-smooth\fP\fR=\fP\fIRADIUS\fP
+\fRBlend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.\fP
+.PP
+.TP
+\fR[default: 0.08]\fP
+.PP
+.TP
+\fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
+\fRHald clut level to generate. A level of 16 stores a value for the entire sRGB color space.\fP
+.PP
+.TP
+\fR[default: 10]\fP
+.PP
+.PP
+.PP
 .SS GAUSSIAN\ BLUR\ (DEFAULT):
 .TP
 \fB\-l\fP\fR, \fP\fB\-\-level\fP\fR=\fP\fI2\-16\fP
@@ -1107,6 +1235,10 @@ For example, `~/.config/lutgen/My\-palette.txt` would be avalable to use as `my\
 .TP
 \fB\-N\fP\fR, \fP\fB\-\-nearest\-neighbor\fP
 \fRDisable interpolation completely.\fP
+.PP
+.TP
+\fB\-T\fP\fR, \fP\fB\-\-tonal\-ramp\fP
+\fREnable using the palette\*(Aqs neutral ramp and accents, keeping the image\*(Aqs tonal structure.\fP
 .PP
 .TP
 \fB\-h\fP\fR, \fP\fB\-\-help\fP

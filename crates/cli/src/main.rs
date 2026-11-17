@@ -22,6 +22,7 @@ use lutgen::interpolation::{
     GaussianSamplingRemapper,
     NearestNeighborRemapper,
     ShepardRemapper,
+    TonalRampRemapper,
 };
 use lutgen::{GenerateLut, RgbImage, RgbaImage};
 use lutgen_palettes::Palette;
@@ -88,6 +89,20 @@ struct Common {
 }
 
 #[derive(Bpaf, Clone, Debug, Hash)]
+struct CommonLevel {
+    /// Hald clut level to generate. A level of 16 stores a value for the entire sRGB color space.
+    #[bpaf(
+        short,
+        long,
+        argument("2-16"),
+        fallback(10),
+        display_fallback,
+        guard(|v| (2..=16).contains(v), "hald level must between 2-16"))
+    ]
+    level: u8,
+}
+
+#[derive(Bpaf, Clone, Debug, Hash)]
 struct CommonRbf {
     /// Number of nearest colors to consider when interpolating. 0 uses all available colors.
     #[bpaf(short, long, argument("NEAREST"), fallback(16), display_fallback)]
@@ -123,6 +138,12 @@ enum LutAlgorithm {
     NearestNeighbor {
         _nearest_neighbor: (),
         common: Common,
+    },
+    TonalRamp {
+        _tonal_ramp: (),
+        keep_lum: Hashed<f64>,
+        smooth: Hashed<f64>,
+        common_level: CommonLevel,
     },
     HaldClut {
         file: PathBuf,
@@ -244,6 +265,36 @@ fn lut_algorithm() -> impl Parser<LutAlgorithm> {
         .group_help("Nearest neighbor:")
     };
 
+    let tonal_ramp = {
+        let _tonal_ramp = short('T')
+            .long("tonal-ramp")
+            .help("Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.")
+            .req_flag(());
+        let keep_lum = short('k')
+            .long("keep-lum")
+            .help("Lightness to keep from the original image, from 0 (the palette's neutral ramp) to 1 (the original lightness).")
+            .argument::<Hashed<f64>>("0-1")
+            .guard(|v| (0.0..=1.0).contains(&v.0), "keep-lum must be between 0 and 1")
+            .fallback(Hashed(0.5))
+            .display_fallback();
+        let smooth = short('s')
+            .long("smooth")
+            .help("Blend radius between accents (Oklab a/b). Smaller values give purer palette colors, bigger values smoother gradients between hues.")
+            .argument::<Hashed<f64>>("RADIUS")
+            .guard(|v| v.0 > 0.0, "smooth must be positive")
+            .fallback(Hashed(0.08))
+            .display_fallback();
+        let common_level = common_level();
+        construct!(LutAlgorithm::TonalRamp {
+            _tonal_ramp,
+            keep_lum,
+            smooth,
+            common_level,
+        })
+        .adjacent()
+        .group_help("Tonal ramp:")
+    };
+
     // Completion hints for adjacent algorithm flags.
     // Adjacent groups don't register their flags with the completion engine unless the
     // leading flag is already present on the command line. These hidden switches always
@@ -270,17 +321,23 @@ fn lut_algorithm() -> impl Parser<LutAlgorithm> {
         .help("Disable interpolation completely.")
         .switch()
         .hide_usage();
+    let comp_t = short('T')
+        .long("tonal-ramp")
+        .help("Enable using the palette's neutral ramp and accents, keeping the image's tonal structure.")
+        .switch()
+        .hide_usage();
 
     let algorithm = construct!([
         gaussian_rbf,
         gaussian_sampling,
         shepards_method,
         nearest_neighbor,
+        tonal_ramp,
         gaussian_blur,
     ]);
 
-    construct!(algorithm, comp_r, comp_g, comp_s, comp_n)
-        .map(|(a, _, _, _, _)| a)
+    construct!(algorithm, comp_r, comp_g, comp_s, comp_n, comp_t)
+        .map(|(a, _, _, _, _, _)| a)
         .custom_usage(&[
             ("[", Style::Text),
             ("ALGORITHM", Style::Metavar),
@@ -397,6 +454,15 @@ impl LutAlgorithm {
             } => (
                 NearestNeighborRemapper::new(&colors, lum_factor.0, *preserve)
                     .par_generate_lut(*level),
+                *level,
+            ),
+            LutAlgorithm::TonalRamp {
+                keep_lum,
+                smooth,
+                common_level: CommonLevel { level },
+                ..
+            } => (
+                TonalRampRemapper::new(&colors, keep_lum.0, smooth.0).par_generate_lut(*level),
                 *level,
             ),
             _ => unreachable!(),
